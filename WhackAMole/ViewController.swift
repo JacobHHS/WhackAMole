@@ -41,5 +41,6 @@ class ViewController : UIViewController {
         print("Mole has been hit")
         score += 1
         scoreLabel.text = "\(score)"
+        moleButton.removeFromSuperview()
     }
 }
