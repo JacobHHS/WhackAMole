@@ -1,11 +1,12 @@
 import UIKit
 class ViewController : UIViewController {
     
+    var moleButton = UIButton()
     var scoreLabel = UILabel()
     var backgroundLabel = UILabel()
     var screenWidth = 0
     var screenHeight = 0
-    var score = 0;
+    var score = 0
     let margin = 20
     
     override func viewDidLoad() {
@@ -25,8 +26,18 @@ class ViewController : UIViewController {
         backgroundLabel.frame = CGRect(x: margin, y: margin + screenHeight/10, width: screenWidth - margin * 2, height: screenHeight - margin * 2 - screenHeight / 10)
         backgroundLabel.backgroundColor = UIColor.green
         
+        //Button
+        moleButton.frame = CGRect(x: margin, y: margin + screenHeight / 10, width:40, height:40)
+        moleButton.layer.cornerRadius = 20
+        moleButton.backgroundColor = UIColor.brown
+        moleButton.addTarget(self, action: #selector(hitMe(_:)), for: .touchUpInside)
+        
         view.addSubview(scoreLabel)
         view.addSubview(backgroundLabel)
+        view.addSubview(moleButton)
         self.view = view
+    }
+    @objc func hitMe(_ sender:UIButton!) {
+        print("Mole has been hit")
     }
 }
