@@ -4,9 +4,11 @@ class ViewController : UIViewController {
     var moleButton = UIButton()
     var scoreLabel = UILabel()
     var backgroundLabel = UILabel()
+    var timer = Timer()
     var screenWidth = 0
     var screenHeight = 0
     var score = 0
+    var moles = 0
     let margin = 20
     
     override func viewDidLoad() {
@@ -32,6 +34,9 @@ class ViewController : UIViewController {
         moleButton.backgroundColor = UIColor.brown
         moleButton.addTarget(self, action: #selector(hitMe(_:)), for: .touchUpInside)
         
+        //Timer
+        timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(missedMole), userInfo: nil, repeats: true)
+        
         view.addSubview(scoreLabel)
         view.addSubview(backgroundLabel)
         view.addSubview(moleButton)
@@ -40,7 +45,12 @@ class ViewController : UIViewController {
     @objc func hitMe(_ sender:UIButton!) {
         print("Mole has been hit")
         score += 1
+        moles += 1
         scoreLabel.text = "\(score)"
         moleButton.removeFromSuperview()
+    }
+    @objc func missedMole() {
+        moleButton.removeFromSuperview()
+        moles += 1
     }
 }
