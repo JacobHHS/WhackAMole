@@ -27,7 +27,7 @@ class ViewController : UIViewController {
         backgroundLabel.backgroundColor = UIColor.green
         
         //Button
-        moleButton.frame = CGRect(x: margin, y: margin + screenHeight / 10, width:40, height:40)
+        moleButton.frame = CGRect(x: Int.random(in: margin...screenWidth-margin-40), y: Int.random(in: margin + (screenHeight/10)...screenHeight - margin), width:40, height:40)
         moleButton.layer.cornerRadius = 20
         moleButton.backgroundColor = UIColor.brown
         moleButton.addTarget(self, action: #selector(hitMe(_:)), for: .touchUpInside)
